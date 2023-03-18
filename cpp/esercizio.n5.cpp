@@ -9,6 +9,8 @@
 
 using namespace std;
 
+int legge_posizione( int [9] );
+
 int main (void){
 	int t[9]={0},i=0,giocatore,sg=1,posizione; //sg=scelta giocatore
 	cout<<"Benvenuti nel tris! Il funzionamento del gioco è molto semplice, ad ogni turno verrá chiesto ad un giocatore di fare la sua mossa scrivendo la casella che desidera cambiare"<<endl;
@@ -16,14 +18,14 @@ int main (void){
 		cout<<"La situazione attuale è "<<endl<<"["<<t[0]<<"]"<<"  "<<"["<<t[1]<<"]"<<"  "<<"["<<t[2]<<"]"<<"  "<<endl<<"["<<t[3]<<"]"<<"  "<<"["<<t[4]<<"]"<<"  "<<"["<<t[5]<<"]"<<"  "<<endl<<"["<<t[6]<<"]"<<"  "<<"["<<t[7]<<"]"<<"  "<<"["<<t[8]<<"]"<<"  "<<endl;
 		if (sg==1){
 			cout<<"Giocatore 1 fai la tua mossa! ";
-			cin>>posizione;
+			posizione=legge_posizione( t );
 			posizione=posizione-1;
 			sg=2;
 			t[posizione]=1;
 			}
 		else{
 			cout<<"Giocatore 2 fai la tua mossa! ";
-			cin>>posizione;
+			posizione=legge_posizione(t);
 			posizione=posizione-1;
 			sg=1;
 			t[posizione]=4;
@@ -44,4 +46,17 @@ int main (void){
 			i=0;
 			}
 		}
+}
+
+int legge_posizione(int t[9] ){
+
+	int p;
+
+	cin >> p;
+	while ( (p < 1)  or (p > 9) or (t[p-1] != 0) ){
+		cout << "non puoi inserire" << p << endl;
+		cout << "fai un altra mossa " ;
+		cin >> p ;
+	};
+	return p;
 }

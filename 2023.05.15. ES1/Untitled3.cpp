@@ -71,7 +71,7 @@ void stampa(studenti* vet){
 void riordina(studenti * vet){
 	int temp;
 	for(int i=0; i<10; i++){
-		for(int j=0; j<10; j++){
+		for(int j=0; j<10-1; j++){
 			if(vet[j].voti<vet[j+1].voti){
 				temp=vet[j].voti;
 				vet[j].voti=vet[j+1].voti;
